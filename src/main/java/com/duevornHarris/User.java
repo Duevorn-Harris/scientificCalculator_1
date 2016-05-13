@@ -22,9 +22,5 @@ public class User {
             }
         return input;
         }
-    public ArrayList<Double> returnCalculatorInput(){
-        System.out.println(input);
-        return input;
-    }
 }
 

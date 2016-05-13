@@ -10,15 +10,17 @@ import static org.junit.Assert.*;
 /**
  * Created by duevornharris on 5/1/16.
  */
-public class ScientificCalculatorTest {
+public class CalculatorSpec {
 
     Calculator newCalculator;
     User newUser;
+    Display newDisplay;
 
     @Before
     public void initializeCalculator() {
         newCalculator = new Calculator();
         newUser = new User();
+        newDisplay = new Display();
     }
 
     @Test
@@ -89,10 +91,36 @@ public class ScientificCalculatorTest {
         double expectedResult = 2;
         ArrayList<Double> input = new ArrayList<Double>();
         input.add(4.0);
-        double actualResult = newCalculator.squareroot(input);
-        assertEquals("The expected square root does not equal the actual square root", expectedResult, actualResult, 0);
+        double actualResult = newCalculator.squareRoot(input);
+        assertEquals("The expected square root does not equal the actual square root ", expectedResult, actualResult, 0);
     }
 
+    @Test
+    public void inverseTest(){
+        ArrayList<Double> input = new ArrayList<Double>();
+        input.add(5.0);
+        double expectedResult = (1/(input.get(0)));
+        double actualResult = newCalculator.inverse(input);
+        assertEquals("The expected inverse does not equal the actual inverted sum ", expectedResult, actualResult, 0);
+    }
+
+    @Test
+    public void switchSignTest(){
+        ArrayList<Double> input = new ArrayList<Double>();
+        input.add(-5.0);
+        double expectedResult = (5.0);
+        double actualResult = newCalculator.switchSign(input);
+        assertEquals("The sign of the number was not switched ", expectedResult, actualResult, 0);
+    }
+
+    @Test
+    public void getInitialStateTest(){
+        ArrayList<Double> expectedResult = new ArrayList<Double>();
+        expectedResult.add(0.0);
+        ArrayList<Double> actualResult = newDisplay.getInitialState();
+        assertEquals("The initial display on the calculator is not the same as the expected display result ", expectedResult,
+                actualResult);
+    }
 
 }
 
